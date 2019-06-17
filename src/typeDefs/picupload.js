@@ -9,6 +9,7 @@ export default gql`
 
   extend type Mutation {
     uploadFile(file: Upload!): File! # Upload Video
+    addFileInfo(path: String!, filename:String, mimetype:String): File
   }
 
   type File {
