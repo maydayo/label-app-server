@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "start": "babel-node -- ./index.js"
+  },
+  "dependencies": {
+    "@babel/node": "^7.4.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4"
+  }
+}
