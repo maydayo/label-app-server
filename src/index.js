@@ -17,7 +17,7 @@ const port = process.env.APP_PORT || 3005;
 
   app.disable("x-powered-by");
 
-  app.get("/", (req, res) => res.send("Hello World!"));
+  app.use('/files', (express.static('uploaded'))) // Serving Static Files
 
   const server = new ApolloServer({
     // Create Apollo Server
