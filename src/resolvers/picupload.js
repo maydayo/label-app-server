@@ -58,7 +58,15 @@ export default {
   Query: {
     files: () => {
       return File.find({});
-    }
+    },
+    fileUrlsByDate: async (root, {startDate, finishDate}) => {
+      const videos = await File.find({
+          createdAt: { $gte: startDate, $lt: finishDate }
+      }).then(res => {
+          return res.map(video => `${video.id}`+"-"+`${video.filename}`);
+        });
+      return videos;
+    },
   },
   Mutation: {
     uploadFile: (obj, { file }, context) => {

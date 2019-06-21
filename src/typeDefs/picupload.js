@@ -5,6 +5,7 @@ export default gql`
 
   extend type Query {
     files: [File] # Query list of all of video file
+    fileUrlsByDate(startDate: Date!, finishDate: Date!): [String]!
   }
 
   extend type Mutation {
