@@ -23,6 +23,8 @@ export default gql`
   }
 
   type Label {
+    viewWidth: Float!
+    viewHeight: Float!
     startPointX: Float!
     stopPointX: Float!
     startPointY: Float!
@@ -31,6 +33,8 @@ export default gql`
   }
 
   input LabelInput {
+    viewWidth: Float!
+    viewHeight: Float!
     startPointX: Float!
     stopPointX: Float!
     startPointY: Float!
