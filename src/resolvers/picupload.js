@@ -35,21 +35,22 @@ const storeFS = ({ stream, filename }) => {
 const storeDB = args => {
   // Store data to database when upload files
   const file = new File(args);
-  file.save();
+  file.save().catch((e)=>console.log(e));
   return file;
 };
 
-const processUpload = async file => {
+const processUpload = async (file,label) => {
   // Upload files
   const { createReadStream, filename, mimetype } = await file;
-  console.log(filename);
+  console.log("label", label);
   const stream = createReadStream();
   const { id, path } = await storeFS({ stream, filename });
   const dbInfo = await storeDB({
     id,
     filename,
     mimetype,
-    path
+    path,
+    label
   });
   return dbInfo;
 };
@@ -69,10 +70,10 @@ export default {
     },
   },
   Mutation: {
-    uploadFile: (obj, { file }, context) => {
+    uploadFile: (obj, { file, label }, context) => {
         console.log("uploadfile")
       // TODO: projection
-      return processUpload(file);
+      return processUpload(file,label);
     },
     addFileInfo: (obj, { path, filename, mimetype }) => {
       console.log(path, filename, mimetype);
